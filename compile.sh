@@ -1,0 +1,1 @@
+make -C libft && make
