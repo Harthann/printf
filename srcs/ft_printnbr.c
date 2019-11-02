@@ -6,54 +6,67 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:03:17 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/01 05:51:42 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/02 03:45:24 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
-static int	int_length(int nbr)
+static	void	ft_print_field(int length,int nb_len, int nbr, t_flags p)
 {
-	int				count;
-	unsigned int	nb;
+	unsigned int	u_nb;
 
-	nb = nbr < 0 ? -nbr : nbr;
-	count = 0;
-	if (nbr == 0)
-		return (1);
-	while (nb > 0)
+	while (p.minus == 0 && p.pad_value > 0 && length > 0)
 	{
-		nb /= 10;
-		count++;
+		write(1, " ", 1);
+		length--;
 	}
-	return (nbr < 0 ? count + 1 : count);
+	if (p.pad_zero == 1 || p.prec_len > 0)
+	{
+		if (p.plus == 1 && nbr > 0 )
+			write(1, "+", 1);
+		else if (p.space == 1 && nbr > 0)
+			write(1, " ", 1);
+		else if(nbr < 0)
+			write(1, "-", 1);
+	}
+	while ((p.pad_zero == 1 || p.prec_len > 0) && nb_len > 0)
+	{
+		write(1, "0", 1);
+		nb_len--;
+	}
+	if (p.pad_zero == 1 && nbr < 0)
+		u_nb = -nbr;
+	else
+		u_nb = nbr;
+	ft_putnbr_fd(u_nb, 1);
+	while (p.minus == 1 && length > 0)
+	{
+		write(1, " ", 1);
+		length--;
+	}
 }
 
-int		ft_printnbr(va_list ap, t_flags parse)
+int		ft_printnbr(va_list ap, t_flags p)
 {
 	int				nbr;
-	unsigned int	u_nb;
 	int				length;
-	int				zero_nb;
+	int				field_len;
+	int				nb_len;
 
 	nbr = va_arg(ap, int);
 	length = int_length(nbr);
-	parse.pad_zero = parse.precision == 1 ? 0 : parse.pad_zero;
-	if (parse.precision == 1 && nbr == 0)
+	p.pad_zero = p.precision == 1 ? 0 : p.pad_zero;
+	if (p.precision == 1 && nbr == 0)
 		return (0);
-	if (parse.pad_zero == 1)
-	{
-		if (parse.plus == 1 && nbr > 0 )
-			write(1, "+", 1);
-		else if (nbr < 0)
-			write(1, "-", 1);
-	}
-	if (parse.plus == 1 && nbr > 0)
-		parse.pad_value--;
-	zero_nb = parse.pad_value > length ? parse.pad_value - length : length - parse.pad_value;
-	if (parse.pad_zero == 1 && nbr < 0)
-		u_nb = -nbr;
-	parse.minus == 0 ? write(1, )
-	ft_putnbr_fd(nbr < 0 ? u_nb : nbr, 1);
+	if (p.plus == 1 && nbr > 0)
+		p.pad_value--;
+	nb_len = p.prec_len > length ? p.prec_len - length : 0;
+	if (p.pad_value > length + nb_len)
+		field_len = p.pad_value - length - nb_len;
+	else
+		field_len = 0;
+	ft_print_field(field_len, nb_len, nbr, p);
 	return (0);
 }

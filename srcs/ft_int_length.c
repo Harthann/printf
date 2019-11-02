@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_int_length.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/27 09:48:09 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/02 03:28:45 by nieyraud         ###   ########.fr       */
+/*   Created: 2019/11/02 01:13:59 by nieyraud          #+#    #+#             */
+/*   Updated: 2019/11/02 01:14:19 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
-int		main(void)
+int	int_length(int nbr)
 {
-	char *str = "avec";
-	char *arg = "Je test [%10.5d] printf [%02.s] des pointeurs : [%p]\n";
+	int				count;
+	unsigned int	nb;
 
-	printf(arg , 25, str, str);
-	ft_printf(arg, 25, str, str);
-	return (0);
+	nb = nbr < 0 ? -nbr : nbr;
+	count = 0;
+	if (nbr == 0)
+		return (1);
+	while (nb > 0)
+	{
+		nb /= 10;
+		count++;
+	}
+	return (nbr < 0 ? count + 1 : count);
 }

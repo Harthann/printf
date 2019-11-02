@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 09:44:21 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/10/31 23:54:14 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/02 03:58:05 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_flags
 	int		pad_zero;
 	int		pad_value;
 	int		precision;
-	int		precision_value;
+	int		prec_len;
 	int		minus;
 	int		plus;
 	int		space;
@@ -35,5 +35,7 @@ int				ft_printstr(va_list ap, t_flags parsed);
 int				ft_parse_string(char *flags, va_list ap);
 int				ft_parse_digit(char *flags, va_list ap);
 int				ft_printnbr(va_list ap, t_flags parse);
+int				int_length(int nbr);
+void			ft_init_parse(t_flags *p);
 
 #endif

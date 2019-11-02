@@ -6,7 +6,7 @@
 #    By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/26 12:54:40 by nieyraud          #+#    #+#              #
-#    Updated: 2019/10/31 23:54:42 by nieyraud         ###   ########.fr        #
+#    Updated: 2019/11/02 03:58:26 by nieyraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRC_FILE =	ft_printf.c \
 			ft_parse_string.c \
 			ft_parse_digit.c \
 			ft_printnbr.c \
+			ft_int_length.c \
+			ft_init_parse.c
 
 PATH = srcs/
 
