@@ -58,8 +58,7 @@ FLAGS = -Wall -Werror -Wextra
 all : $(NAME)
 
 $(NAME) : ${OBJS} ${INCLUDE}
-	@echo Creating ${NAME}
-	@ar -rcs ${NAME} ${OBJS}
+
 
 %.o: %.c
 	@echo Compiling $<

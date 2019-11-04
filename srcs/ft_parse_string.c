@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 20:44:24 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/10/31 23:12:15 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/03 03:18:53 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		ft_parse_string(char *flags, va_list ap)
 {
 	t_flags parse;
 
+	ft_init_parse(&parse);
 	parse.pad_zero = *flags == '0' ? 1 : 0;
 	while (*flags == '0' || *flags == ' ')
 		flags++;
@@ -31,9 +32,9 @@ int		ft_parse_string(char *flags, va_list ap)
 		flags++;
 	}
 	if (*flags == '*')
-		parse.precision_value = va_arg(ap, int);
+		parse.prec_len = va_arg(ap, int);
 	else
-		parse.precision_value = ft_atoi(flags);
+		parse.prec_len = ft_atoi(flags);
 	while (*flags == '*' || (*flags >= '0' && *flags <= '9'))
 		flags++;
 	return (ft_printstr(ap, parse));
