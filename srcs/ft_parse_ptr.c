@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_parse.c                                    :+:      :+:    :+:   */
+/*   ft_parse_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/02 03:56:31 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/05 11:48:08 by nieyraud         ###   ########.fr       */
+/*   Created: 2019/11/05 14:43:15 by nieyraud          #+#    #+#             */
+/*   Updated: 2019/11/05 17:59:12 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_init_parse(t_flags *p)
+int		ft_parse_ptr(char *flags, va_list ap)
 {
-	p->pad_zero = 0;
-	p->pad_value = 0;
-	p->precision = 0;
-	p->prec_len = 0;
-	p->minus = 0;
-	p->plus = 0;
-	p->space = 0;
+	t_flags p;
+
+	(void)flags;
+	ft_init_parse(&p);
+	while (*flags == '-')
+		p.minus = 1;
+	p.pad_value = ft_atoi(flags + 1);
+	return (ft_printptr(p, va_arg(ap, unsigned long int)));
 }

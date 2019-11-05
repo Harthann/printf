@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_parse.c                                    :+:      :+:    :+:   */
+/*   ft_print_addr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/02 03:56:31 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/05 11:48:08 by nieyraud         ###   ########.fr       */
+/*   Created: 2019/11/05 13:14:19 by nieyraud          #+#    #+#             */
+/*   Updated: 2019/11/05 16:26:34 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_init_parse(t_flags *p)
+int		ft_print_addr(unsigned long int nb)
 {
-	p->pad_zero = 0;
-	p->pad_value = 0;
-	p->precision = 0;
-	p->prec_len = 0;
-	p->minus = 0;
-	p->plus = 0;
-	p->space = 0;
+	char *base;
+	static int count = 0;
+
+	base = "0123456789abcdef";
+	if (nb > 15)
+		ft_print_addr(nb / 16);
+	ft_putchar_fd(base[nb % 16], 1);
+	count++;
+	return (count);
 }

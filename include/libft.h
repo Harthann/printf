@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 17:02:41 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/10/26 13:23:55 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:09:53 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,5 @@ void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *));
-void			ft_print_addr(void *addr);
-void			ft_hexchar(unsigned char c);
 
 #endif

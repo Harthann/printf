@@ -1,4 +1,4 @@
-NAME = libft.a
+NAME = ../libftprintf.a
 
 SRC_FILE =		ft_atoi.c \
 				ft_bzero.c \
@@ -53,27 +53,23 @@ BONUS_OBJS	= $(BONUS_SRCS:%.c=%.o)
 
 INCLUDE = libft.h
 FLAGS = -Wall -Werror -Wextra
-
+CC = /usr/bin/gcc
+AR = /usr/bin/ar
 
 all : $(NAME)
 
 $(NAME) : ${OBJS} ${INCLUDE}
-
+	@$(AR) rc ${NAME} ${OBJS}
 
 %.o: %.c
-	@echo Compiling $<
-	@gcc $(FLAGS) -c $< -o $@
-
-bonus : ${NAME} ${BONUS_OBJS}
-	@echo Adding bonus to ${NAME}
-	@ar -rcs ${NAME} ${BONUS_OBJS}
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean :
-	@echo Removing objects files
+	@${ECHO} Removing objects files
 	@rm -f ${OBJS} ${BONUS_OBJS}
 
 fclean : clean
-	@echo Removing ${NAME}
+	@${ECHO} Removing ${NAME}
 	@rm -f $(NAME)
 
 re : fclean all

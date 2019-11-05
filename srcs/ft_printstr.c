@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:37:37 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/04 06:47:25 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/05 13:02:48 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ int		ft_printstr(va_list ap, t_flags parsed)
 	}
 	else
 		to_free = NULL;
-	if (parsed.precision == 1)
+	len = ft_strlen(str);
+	if (parsed.precision == 1 && parsed.prec_len < len)
 		len = parsed.prec_len;
-	else
-		len = ft_strlen(str);
 	i = 0;
 	if (len < parsed.pad_value && parsed.minus == 0)
 		while (i++ < parsed.pad_value - len)
@@ -42,5 +41,5 @@ int		ft_printstr(va_list ap, t_flags parsed)
 		while (i++ < parsed.pad_value - len)
 			write(1, " ", 1);
 	!to_free ? 0 : free(to_free);
-	return (len + parsed.pad_value);
+	return (len > parsed.pad_value ? len : parsed.pad_value);
 }

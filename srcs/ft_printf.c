@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 09:42:48 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/04 01:10:18 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:30:30 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		flags_parse(char *flags, va_list ap, size_t len)
 	count += (flags[len - 1] == 'd' ? ft_parse_digit(flags, ap) : 0);
 	count += (flags[len - 1] == 'i' ? ft_parse_digit(flags, ap) : 0);
 	count += (flags[len - 1] == 'c' ? ft_parse_char(flags, ap) : 0);
+	count += (flags[len - 1] == 'p' ? ft_parse_ptr(flags, ap) : 0);
 	return (count);
 }
 
