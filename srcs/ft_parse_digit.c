@@ -6,14 +6,14 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:25:36 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/04 05:52:24 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:39:03 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-int		ft_parse_flags(t_flags *p, char *flags, va_list ap)
+int				ft_parse_flags(t_flags *p, char *flags, va_list ap)
 {
 	if (*flags == '0')
 		return (p->pad_zero = 1);

@@ -6,7 +6,7 @@
 #    By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/26 12:54:40 by nieyraud          #+#    #+#              #
-#    Updated: 2019/11/05 17:03:16 by nieyraud         ###   ########.fr        #
+#    Updated: 2019/11/07 17:52:06 by nieyraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,14 @@ SRC_FILE =	ft_printf.c \
 			ft_int_length.c \
 			ft_init_parse.c \
 			ft_parse_char.c \
-			ft_print_addr.c \
 			ft_parse_ptr.c \
 			ft_printptr.c \
 			ft_ultoa.c \
+			ft_parse_hexa.c \
+			ft_print_hexa.c \
+			ft_parse_unsigned.c \
+			ft_print_unsigned.c \
+			ft_parse_percent.c \
 
 LIBFT_SRC = ft_atoi.c \
 			ft_bzero.c \
@@ -74,11 +78,9 @@ FLAGS = -Wall -Werror -Wextra
 
 all : $(NAME)
 
-$(NAME) : ${OBJS} ${INCLUDE} 
-	@echo Creating libft.a
-	@$(MAKE) -C ./libft/
+$(NAME) : ${OBJS} ${LIBFT_OBJS} ${INCLUDE} 
 	@echo Creating ${NAME}
-	@ar rc ${NAME} ${OBJS}
+	@ar rc ${NAME} ${OBJS} ${LIBFT_OBJS}
 
 %.o: %.c
 	@echo Compiling $<

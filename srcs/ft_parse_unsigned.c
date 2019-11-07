@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_char.c                                    :+:      :+:    :+:   */
+/*   ft_parse_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/03 02:21:37 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/07 18:01:08 by nieyraud         ###   ########.fr       */
+/*   Created: 2019/11/07 14:56:11 by nieyraud          #+#    #+#             */
+/*   Updated: 2019/11/07 15:38:14 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_parse_char(char *flags, va_list ap)
+int		ft_parse_unsigned(char *flags, va_list ap)
 {
-	t_flags	p;
-	char	*str;
+	t_flags p;
 
+	ft_init_parse(&p);
+	p.pad_zero = *flags == '0';
+	while (*flags == '0')
+		flags++;
 	p.minus = *flags == '-';
 	while (*flags == '-')
 		flags++;
 	p.pad_value = *flags == '*' ? va_arg(ap, int) : ft_atoi(flags);
-	if (p.pad_value <= 1)
-	{
-		ft_putchar_fd(va_arg(ap, int), 1);
-		return (1);
-	}
-	if (!(str = (char*)malloc(sizeof(char) * (p.pad_value + 1))))
-		return (-1);
-	str[p.pad_value] = '\0';
-	ft_memset(str, ' ', p.pad_value);
-	if (p.minus == 1)
-		str[0] = va_arg(ap, int);
-	else
-		str[p.pad_value - 1] = va_arg(ap, int);
-	write(1, str, p.pad_value);
-	return (p.pad_value);
+	while ((*flags >= '0' && *flags <= '9') || *flags == '*')
+		flags++;
+	p.precision = *flags == '.';
+	while (*flags == '.')
+		flags++;
+	p.prec_len = *flags == '*' ? va_arg(ap, int) : ft_atoi(flags);
+	return (ft_print_unsigned(p, va_arg(ap, unsigned int)));
 }

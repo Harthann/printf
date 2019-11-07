@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 17:01:28 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/05 17:07:22 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/06 11:30:55 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static	int		ft_count_length(unsigned long int n)
 	int		length;
 
 	length = 1;
-	while (n / 10 > 0)
+	while (n / 16 > 0)
 	{
 		length++;
-		n = n / 10;
+		n = n / 16;
 	}
 	return (length);
 }
@@ -32,8 +32,8 @@ static	void	ft_fill_number(char *number, unsigned long int n, int nb_length)
 	base = "0123456789abcdef";
 	while (--nb_length >= 0)
 	{
-			number[nb_length] = base[n % 16];
-			n = n / 16;
+		number[nb_length] = base[n % 16];
+		n = n / 16;
 	}
 }
 
