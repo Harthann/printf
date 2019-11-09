@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:48:22 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/07 15:40:37 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/09 17:18:18 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int				ft_print_unsigned(t_flags p, unsigned int nbr)
 	if (p.precision == 1 && nbr == 0 && p.prec_len == 0 && p.pad_value == 0)
 		return (0);
 	len = ft_count_length(nbr);
-	nb_0 = p.prec_len > len ? p.prec_len - len : 0;
-	nb_space = p.pad_value > len + nb_0 ? p.pad_value - len - nb_0 : 0;
+	nb_0 = (size_t)p.prec_len > len ? p.prec_len - len : 0;
+	nb_space = (size_t)p.pad_value > len + nb_0 ? p.pad_value - len - nb_0 : 0;
 	str = ft_print_field(nb_space, nb_0, len, p);
 	while (len > 0)
 	{

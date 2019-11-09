@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 14:43:15 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/06 19:34:29 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/09 17:07:52 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		ft_parse_ptr(char *flags, va_list ap)
 		p.minus = 1;
 		flags++;
 	}
-	p.pad_value = *flags == '*' ? va_arg(ap, int) : ft_atoi(flags);
+	p.pad_value = *flags == '*' ? ft_get_number('*', &p, ap) : ft_atoi(flags);
 	str = ft_printptr(p, va_arg(ap, unsigned long int));
 	length = ft_strlen(str);
 	if (str)

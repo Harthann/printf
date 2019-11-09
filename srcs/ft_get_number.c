@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_parse.c                                    :+:      :+:    :+:   */
+/*   ft_get_number.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/02 03:56:31 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 16:26:00 by nieyraud         ###   ########.fr       */
+/*   Created: 2019/11/09 16:26:42 by nieyraud          #+#    #+#             */
+/*   Updated: 2019/11/09 17:23:07 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_init_parse(t_flags *p)
+int		ft_get_number(char c, t_flags *p, va_list ap)
 {
-	p->pad_zero = 0;
-	p->pad_value = 0;
-	p->precision = 0;
-	p->prec_len = 0;
-	p->minus = 0;
+	int nb;
+
+	nb = va_arg(ap, int);
+	if (nb < 0 && c != '.')
+	{
+		p->minus = 1;
+		return (-nb);
+	}
+	else if (nb < 0 && c == '.')
+		return (0);
+	else
+		return (nb);
 }

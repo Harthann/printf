@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:21:43 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/07 18:27:40 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/09 17:12:20 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static char	*ft_fill(t_flags p)
 {
 	char *str;
+
 	if (!(str = (char*)malloc(sizeof(char) * (p.pad_value + 1))))
 		return (NULL);
 	str[p.pad_value] = '\0';
@@ -40,7 +41,7 @@ int			ft_parse_percent(char *flags, va_list ap)
 	p.minus = *flags == '-';
 	while (*flags == '-' || *flags == '+')
 		flags++;
-	p.pad_value = *flags == '*' ? va_arg(ap, int) : ft_atoi(flags);
+	p.pad_value = *flags == '*' ? ft_get_number('*', &p, ap) : ft_atoi(flags);
 	if (p.pad_value <= 1)
 	{
 		ft_putchar_fd('%', 1);

@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:09:14 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/06 17:45:12 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/09 17:17:47 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static char		*ft_fill_pad(t_flags *p, size_t len)
 	size_t	nb_0;
 	size_t	spaces;
 
-	nb_0 = p->prec_len > len ? p->prec_len - len : 0;
-	spaces = p->pad_value > len + nb_0 ? p->pad_value - len - nb_0 : 0;
+	nb_0 = (size_t)p->prec_len > len ? p->prec_len - len : 0;
+	spaces = (size_t)p->pad_value > len + nb_0 ? p->pad_value - len - nb_0 : 0;
 	p->pad_value = spaces;
 	p->prec_len = nb_0;
 	if (!(str = (char*)malloc(sizeof(char) * (nb_0 + spaces + len))))
@@ -57,7 +57,7 @@ char			*ft_print_hexa(t_flags p, unsigned int nb, char c)
 		hexa++;
 	}
 	hexa = str;
-	if (length >= p.pad_value && length >= p.prec_len)
+	if (length >= (size_t)p.pad_value && length >= (size_t)p.prec_len)
 		return (hexa);
 	str = ft_fill_pad(&p, length);
 	if (!(nb == 0 && p.prec_len == 0) && p.minus == 0)

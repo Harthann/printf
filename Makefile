@@ -6,7 +6,7 @@
 #    By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/26 12:54:40 by nieyraud          #+#    #+#              #
-#    Updated: 2019/11/07 17:52:06 by nieyraud         ###   ########.fr        #
+#    Updated: 2019/11/09 16:45:36 by nieyraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_FILE =	ft_printf.c \
 			ft_parse_unsigned.c \
 			ft_print_unsigned.c \
 			ft_parse_percent.c \
+			ft_get_number.c
 
 LIBFT_SRC = ft_atoi.c \
 			ft_bzero.c \

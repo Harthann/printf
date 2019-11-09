@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:03:21 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/06 11:29:39 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/09 17:16:43 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_printptr(t_flags p, unsigned long int ptr)
 	str = ft_strjoin("0x", addr);
 	free(addr);
 	length = ft_strlen(str);
-	if (length >= p.pad_value)
+	if (length >= (size_t)p.pad_value)
 		return (str);
 	if (!(addr = (char*)malloc(sizeof(char) * (p.pad_value + 1))))
 		return (NULL);

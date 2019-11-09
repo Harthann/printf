@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 11:51:05 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/06 17:30:42 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/09 17:22:36 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int		ft_parse_hexa(char *flags, va_list ap, char c)
 	p.minus = *flags == '-';
 	while (*flags == '-')
 		flags++;
-	p.pad_value = *flags == '*' ? va_arg(ap, int) : ft_atoi(flags);
+	p.pad_value = *flags == '*' ? ft_get_number('*', &p, ap) : ft_atoi(flags);
 	while ((*flags >= '0' && *flags <= '9') || *flags == '*')
 		flags++;
 	p.precision = *flags == '.';
 	while (*flags == '.')
 		flags++;
-	p.prec_len = *flags == '*' ? va_arg(ap, int) : ft_atoi(flags);
+	p.prec_len = *flags == '*' ? ft_get_number('.', &p, ap) : ft_atoi(flags);
 	str = ft_print_hexa(p, va_arg(ap, unsigned int), c);
 	length = ft_strlen(str);
 	write(1, str, length);

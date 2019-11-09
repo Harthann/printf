@@ -6,14 +6,14 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 09:42:48 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/07 17:51:41 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:25:39 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-int		flags_parse(char *flags, va_list ap, size_t len)
+static int		flags_parse(char *flags, va_list ap, size_t len)
 {
 	int		count;
 

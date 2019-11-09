@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:03:17 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/04 05:52:56 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:14:14 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ static	int		ft_print_field(int length, int nb_len, int nbr, t_flags p)
 
 	while (p.minus == 0 && p.pad_value > 0 && length-- > 0)
 		write(1, " ", 1);
-	if (p.plus == 1 && nbr >= 0)
-		write(1, "+", 1);
-	else if (p.space == 1 && nbr >= 0)
-		write(1, " ", 1);
-	else if (nbr < 0)
+	if (nbr < 0)
 		write(1, "-", 1);
 	while ((p.pad_zero == 1 || p.prec_len > 0) && nb_len-- > 0)
 		write(1, "0", 1);
@@ -32,8 +28,6 @@ static	int		ft_print_field(int length, int nb_len, int nbr, t_flags p)
 		ft_putnbr_fd(u_nb, 1);
 	while (p.minus == 1 && length-- > 0)
 		write(1, " ", 1);
-	if (nbr >= 0 && (p.plus == 1 || p.space == 1))
-		return (1);
 	return (0);
 }
 
@@ -48,13 +42,10 @@ int				ft_printnbr(t_flags p, int nbr)
 		length = 0;
 	else
 		length = int_length(nbr);
-	nb_len = p.prec_len > length ? p.prec_len - length : 0;
+	nb_len = (size_t)p.prec_len > length ? p.prec_len - length : 0;
 	nb_len += (nb_len > 0 && nbr < 0 && p.prec_len > 0) ? 1 : 0;
-	if (p.pad_value > length + nb_len)
-	{
+	if ((size_t)p.pad_value > length + nb_len)
 		field_len = p.pad_value - length - nb_len;
-		nbr == 0 && (p.plus == 1 || p.space == 1) ? field_len-- : 0;
-	}
 	else
 		field_len = 0;
 	if (p.pad_zero == 1 && p.minus == 0)
