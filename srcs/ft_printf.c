@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 09:42:48 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 17:58:04 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:01:27 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		flags_parse(char *flags, va_list ap, size_t len)
 	return (count);
 }
 
-static void		ft_browse_string(char *str, va_list ap, int *count)
+static void		ft_browse_string(const char *str, va_list ap, int *count)
 {
 	int		i;
 	char	*flags;
@@ -49,13 +49,13 @@ static void		ft_browse_string(char *str, va_list ap, int *count)
 			while (ft_strchr(data_type, str[i]) == NULL)
 				i++;
 			flags = ft_substr(str, 1, i);
-			count += flags_parse(flags, ap, i++);
+			*count = *count + flags_parse(flags, ap, i++);
 			free(flags);
 		}
 		else
 		{
 			write(1, str, 1);
-			count++;
+			*count = *count + 1;
 		}
 		str += i;
 	}
@@ -67,6 +67,7 @@ int				ft_printf(const char *str, ...)
 	int		count;
 
 	va_start(ap, str);
+	count = 0;
 	ft_browse_string(str, ap, &count);
 	va_end(ap);
 	return (count);
