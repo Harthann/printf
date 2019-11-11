@@ -6,13 +6,11 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:37:37 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 17:11:22 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/11 15:30:53 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <string.h>
-#include <stdio.h>
 
 int		ft_printstr(va_list ap, t_flags parsed, size_t i)
 {

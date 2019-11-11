@@ -6,12 +6,11 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:03:17 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 16:14:14 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/11 15:30:41 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 static	int		ft_print_field(int length, int nb_len, int nbr, t_flags p)
 {

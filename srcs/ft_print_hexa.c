@@ -6,12 +6,11 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:09:14 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 17:17:47 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/11 15:30:29 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 static char		*ft_fill_pad(t_flags *p, size_t len)
 {

@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 09:44:21 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 17:11:43 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/11 15:33:36 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 typedef struct	s_flags
 {
 	int		pad_zero;
-	int	pad_value;
+	int		pad_value;
 	int		precision;
-	int	prec_len;
+	int		prec_len;
 	int		minus;
 }				t_flags;
 

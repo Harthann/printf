@@ -6,12 +6,11 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:03:21 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 17:16:43 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/11 15:30:46 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 char	*ft_printptr(t_flags p, unsigned long int ptr)
 {

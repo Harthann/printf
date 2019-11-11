@@ -6,12 +6,11 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:48:22 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 17:18:18 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/11 15:30:35 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 static	int		ft_count_length(unsigned long int n)
 {

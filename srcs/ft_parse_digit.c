@@ -6,12 +6,11 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:25:36 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 16:46:33 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/11 15:30:11 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 int				ft_parse_flags(t_flags *p, char *flags, va_list ap)
 {
