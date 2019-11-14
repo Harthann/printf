@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 03:56:31 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/09 16:26:00 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/13 10:58:46 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,6 @@ void	ft_init_parse(t_flags *p)
 	p->precision = 0;
 	p->prec_len = 0;
 	p->minus = 0;
+	p->nb_0 = 0;
+	p->spaces = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:25:36 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/11 15:30:11 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/14 14:44:45 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ int				ft_parse_digit(char *flags, va_list ap)
 	p.minus = *flags == '-';
 	while (*flags == '-')
 		flags++;
-	p.pad_value = *flags == '*' ? ft_get_number('*', &p, ap) : ft_atoi(flags);
+	p.pad_value = *flags == '*' ? get_number('*', &p, ap, 'd') : ft_atoi(flags);
 	while ((*flags >= '0' && *flags <= '9') || *flags == '*')
 		flags++;
 	p.precision = *flags == '.';
 	while (*flags == '.')
 		flags++;
-	p.prec_len = *flags == '*' ? ft_get_number('.', &p, ap) : ft_atoi(flags);
-	p.pad_zero = p.precision == 1 ? 0 : p.pad_zero;
+	p.prec_len = *flags == '*' ? get_number('.', &p, ap, 's') : ft_atoi(flags);
 	nbr = va_arg(ap, int);
+	p.pad_zero = p.precision == 1 && !nbr && !p.prec_len ? 0 : p.pad_zero;
 	return (ft_printnbr(p, nbr));
 }

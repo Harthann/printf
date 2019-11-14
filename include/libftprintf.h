@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 09:44:21 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/11 15:33:36 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/14 13:30:59 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct	s_flags
 	int		precision;
 	int		prec_len;
 	int		minus;
+	size_t	nb_0;
+	size_t	spaces;
 }				t_flags;
 
 int				ft_printf(const char *str, ...);
@@ -42,7 +44,7 @@ char			*ft_ultoa(unsigned long int n);
 int				ft_parse_hexa(char *flags, va_list ap, char c);
 char			*ft_print_hexa(t_flags p, unsigned int nb, char c);
 int				ft_parse_unsigned(char *flags, va_list ap);
-int				ft_print_unsigned(t_flags p, unsigned int nbr);
+char			*ft_print_unsigned(t_flags p, unsigned int nbr);
 int				ft_parse_percent(char *flags, va_list ap);
-int				ft_get_number(char c, t_flags *p, va_list ap);
+int				get_number(char c, t_flags *p, va_list ap, char data);
 #endif

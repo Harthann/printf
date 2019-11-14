@@ -6,7 +6,7 @@
 #    By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/26 12:54:40 by nieyraud          #+#    #+#              #
-#    Updated: 2019/11/09 16:45:36 by nieyraud         ###   ########.fr        #
+#    Updated: 2019/11/14 08:36:09 by nieyraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,9 @@ $(NAME) : ${OBJS} ${LIBFT_OBJS} ${INCLUDE}
 %.o: %.c
 	@echo Compiling $<
 	@gcc $(FLAGS) -c -I include/  $< -o $@
+
+f : ${NAME}
+	/usr/bin/gcc libftprintf.a main.c -I include && ./a.out
 
 clean :
 	@echo Removing objects files

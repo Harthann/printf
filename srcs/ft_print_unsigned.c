@@ -6,7 +6,7 @@
 /*   By: nieyraud <nieyraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:48:22 by nieyraud          #+#    #+#             */
-/*   Updated: 2019/11/11 15:30:35 by nieyraud         ###   ########.fr       */
+/*   Updated: 2019/11/14 14:46:53 by nieyraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,51 +25,48 @@ static	int		ft_count_length(unsigned long int n)
 	return (length);
 }
 
-static	char	*ft_print_field(int spaces, int nb_0, int len, t_flags p)
+static char		*ft_fill_pad(t_flags *p, size_t len)
 {
 	char	*str;
-	int		i;
+	size_t	start;
+	size_t	count;
 
-	i = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (spaces + nb_0 + len + 1))))
+	if ((size_t)p->prec_len >= len)
+		p->nb_0 = p->prec_len - len;
+	if ((size_t)p->pad_value > len + p->nb_0)
+		p->spaces = p->pad_value - len - p->nb_0;
+	if (!(str = (char*)malloc(sizeof(char) * (p->nb_0 + p->spaces + len + 1))))
 		return (NULL);
-	str[spaces + len + nb_0] = '\0';
-	while ((p.pad_zero == 0 || p.precision) && p.minus == 0 && spaces-- > 0)
-		str[i++] = ' ';
-	while (p.minus == 0 && p.pad_zero == 1 && spaces-- > 0)
-		str[i++] = '0';
-	while (nb_0-- > 0)
-		str[i++] = '0';
-	i += len;
-	while (spaces-- > 0)
-		str[i++] = ' ';
+	str[p->nb_0 + p->spaces + len] = '\0';
+	if (!p->pad_zero || p->minus || p->precision)
+		ft_memset(str, ' ', p->nb_0 + p->spaces + len);
+	else
+		ft_memset(str, '0', p->nb_0 + p->spaces + len);
+	start = (p->minus == 1 || p->spaces == 0) ? 0 : p->spaces;
+	count = p->nb_0;
+	while (count-- > 0)
+		str[start++] = '0';
 	return (str);
 }
 
-int				ft_print_unsigned(t_flags p, unsigned int nbr)
+char			*ft_print_unsigned(t_flags p, unsigned int nb)
 {
-	size_t	len;
-	size_t	nb_0;
-	size_t	nb_space;
 	char	*str;
+	size_t	length;
 
-	if (p.precision == 1 && nbr == 0 && p.prec_len == 0 && p.pad_value == 0)
-		return (0);
-	len = ft_count_length(nbr);
-	nb_0 = (size_t)p.prec_len > len ? p.prec_len - len : 0;
-	nb_space = (size_t)p.pad_value > len + nb_0 ? p.pad_value - len - nb_0 : 0;
-	str = ft_print_field(nb_space, nb_0, len, p);
-	while (len > 0)
+	p.pad_value = p.pad_value < 0 ? 0 : p.pad_value;
+	if (p.precision == 1 && nb == 0 && p.prec_len == 0 && p.pad_value == 0)
+		return (NULL);
+	length = ft_count_length(nb);
+	str = ft_fill_pad(&p, length);
+	while (length > 0)
 	{
-		if (p.minus == 0)
-			str[nb_0 + nb_space + len - 1] = nbr % 10 + '0';
-		else
-			str[nb_0 + len - 1] = nbr % 10 + '0';
-		nbr /= 10;
-		len--;
+		if ((nb || p.prec_len || !p.precision) && p.minus == 0)
+			str[p.nb_0 + p.spaces + length - 1] = nb % 10 + '0';
+		else if ((nb || p.prec_len || !p.precision))
+			str[p.nb_0 + length - 1] = nb % 10 + '0';
+		nb /= 10;
+		length--;
 	}
-	len = ft_strlen(str);
-	write(1, str, len);
-	free(str);
-	return (len);
+	return (str);
 }
